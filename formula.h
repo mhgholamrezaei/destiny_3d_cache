@@ -45,9 +45,9 @@ double CalculateFBRAMDrainCap(double width, Technology tech);
 double CalculateGateLeakage(
 		int gateType, int numInput,
 		double widthNMOS, double widthPMOS,
-		double temperature, Technology tech);
+		double , Technology tech);
 
-double CalculateOnResistance(double width, int type, double temperature, Technology tech);
+double CalculateOnResistance(double width, int type, double , Technology tech);
 
 double CalculateTransconductance(double width, int type, Technology tech);
 

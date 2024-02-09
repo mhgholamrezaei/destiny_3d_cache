@@ -226,7 +226,8 @@ int main(int argc, char *argv[])
     
         bestDataResults[cellIdx] = new Result[(int)full_exploration];
         bestTagResults[cellIdx] = new Result[(int)full_exploration];
-
+		
+	
         /* Find the best solutions, pruned solutions, or all solutions for this cell type. */
         if (nvsim(outputFile, inputFileName, solutions, bestDataResults[cellIdx], bestTagResults[cellIdx])) {
             failures++;
@@ -468,7 +469,7 @@ int nvsim(ofstream& outputFile, string inputFileName, long long& numSolution, Re
         //    // Require at least 32x32 subarrays.
         //    continue;
         //}
-		CALCULATE(dataBank, data);
+		CALCULATE(dataBank, MemoryType::data);
         numDesigns++;
 		if (!dataBank->invalid) {
 			Result tempResult;
@@ -492,7 +493,7 @@ int nvsim(ofstream& outputFile, string inputFileName, long long& numSolution, Re
 					(bool)isLocalWireLowSwing);
 			for (int i = 0; i < (int)full_exploration; i++) {
 				LOAD_GLOBAL_WIRE(bestDataResults[i]);
-				TRY_AND_UPDATE(bestDataResults[i], data);
+				TRY_AND_UPDATE(bestDataResults[i], MemoryType::data);
 			}
 			if (inputParameter->optimizationTarget == full_exploration && !inputParameter->isPruningEnabled) {
 				OUTPUT_TO_FILE;
@@ -505,7 +506,7 @@ int nvsim(ofstream& outputFile, string inputFileName, long long& numSolution, Re
 					(bool)isGlobalWireLowSwing);
 			for (int i = 0; i < (int)full_exploration; i++) {
 				LOAD_LOCAL_WIRE(bestDataResults[i]);
-				TRY_AND_UPDATE(bestDataResults[i], data);
+				TRY_AND_UPDATE(bestDataResults[i], MemoryType::data);
 			}
 			if (inputParameter->optimizationTarget == full_exploration && !inputParameter->isPruningEnabled) {
 				OUTPUT_TO_FILE;
@@ -606,7 +607,7 @@ int nvsim(ofstream& outputFile, string inputFileName, long long& numSolution, Re
 				/* To aggressive partitioning */
 				continue;
 			}
-			CALCULATE(dataBank, data);
+			CALCULATE(dataBank, MemoryType::data);
             numDesigns++;
 			if (!dataBank->invalid && dataBank->readLatency <= allowedDataReadLatency && dataBank->writeLatency <= allowedDataWriteLatency
 					&& dataBank->readDynamicEnergy <= allowedDataReadDynamicEnergy && dataBank->writeDynamicEnergy <= allowedDataWriteDynamicEnergy

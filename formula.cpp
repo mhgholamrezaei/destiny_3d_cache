@@ -246,10 +246,10 @@ double CalculateDrainCap(
 double CalculateGateLeakage(
 		int gateType, int numInput,
 		double widthNMOS, double widthPMOS,
-		double temperature, Technology tech) {
-	int tempIndex = (int)temperature - 300;
+		double , Technology tech) {
+	int tempIndex = (int) - 300;
 	if ((tempIndex > 100) || (tempIndex < 0)) {
-		cout<<"Error: Temperature is out of range"<<endl;
+		cout<<"Error:  is out of range"<<endl;
 		exit(-1);
 	}
 	double *leakN = tech.currentOffNmos;
@@ -281,11 +281,11 @@ double CalculateGateLeakage(
 	}
 }
 
-double CalculateOnResistance(double width, int type, double temperature, Technology tech) {
+double CalculateOnResistance(double width, int type, double , Technology tech) {
 	double r;
-	int tempIndex = (int)temperature - 300;
+	int tempIndex = (int) - 300;
 	if ((tempIndex > 100) || (tempIndex < 0)) {
-		cout<<"Error: Temperature is out of range"<<endl;
+		cout<<"Error:  is out of range"<<endl;
 		exit(-1);
 	}
 	if (type == NMOS)
